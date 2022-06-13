@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>ペンタスイルイの家</title>
+    <title>フルページスクロール</title>
     <script src="smoothscroll.js"></script>
     <style>
       * {
@@ -12,6 +12,7 @@
       }
 
       h1 {
+        color: ff79c6;
         margin-bottom: 1.8em;
       }
 
@@ -34,37 +35,42 @@
         scroll-snap-align: start;
       }
 
+      .section0 {
+        color: #f8f8f2;
+        background-color:#282A36;
+        font-size: 30px;
+      }
+
       .section1 {
-        background-color: #ffba49;
+        color: #f8f8f2;
+        background-color: #626784;
       }
 
       .section2 {
-        color: white;
-        background-color: mediumvioletred;
+        color: #f8f8f2;
+        background-color: #575B76;
       }
 
 
       .section3 {
-        background-color: #ef5b5b;
+        color: #f8f8f2;
+        background-color: #4B5066;
       }
 
 
       .section4 {
-        background-color: #a4a9ad;
-      }
-
-      .section4 iframe {
-        width: 100%;
-        height: 100%;
+        color: #f8f8f2;
+        background-color: #414359;
       }
 
       .section5 {
-        background-color: #20a39e;
+        color: #f8f8f2;
+        background-color: #36394A;
       }
 
       .section6 {
-        color: white;
-        background-color: #2d2e3f;
+        color: #f8f8f2;
+        background-color: #2B2F3B;
         width: 100%;
         height: 100%;
       }
@@ -82,7 +88,7 @@
         height: 12px;
         margin: 24px 0;
         border-radius: 50%;
-        background-color: #fcfcfc;
+        background-color: #50fa7b;
         transition: transform 0.2s;
       }
 
@@ -93,8 +99,12 @@
   </head>
   <body>
     <div class="fullPageScroll">
+      <section id="section0" class="section section0">
+        <h1 style="color: #ff79c6; align:middle;"><i style="color: #88fff3;">スペインタイル</i>の家と<br/>俊男の関係性について</h1>
+      </section>
+
       <section id="section1" class="section section1">
-        <h1>紙が黄ばむ？</h1>
+        <h1 style="color: #ff79c6;">紙が黄ばむ？</h1>
         <p>
           <ul>
             <li>特に対策をしていない場合は2〜3年程度持つらしい</li></br>
@@ -104,7 +114,7 @@
         </p>
       </section>
       <section id="section2" class="section section2">
-        <h1>そもそもスペインタイルとは？</h1>
+        <h1 style="color: #ff79c6;">そもそもスペインタイルとは？</h1>
         <p><img src="https://firebasestorage.googleapis.com:443/v0/b/type-c1c71.appspot.com/o/258aLsfOHVVvo6JZmE38HcfYQIE2%2FAOuOgpnLeYqbD2rb.jpg?alt=media&token=a5134088-9d13-4bc6-b034-0d26a5806442" width="300" height="300" align="middle"/><br/>
         <ul>
           <li>その名の通りスペイン発祥のタイル</li></br>
@@ -112,30 +122,31 @@
         </ul></p>
       </section>
       <section id="section3" class="section section3">
-        <h1>タイル屋の話を聞いて俊男が考えたであろうこと</h1>
+        <h1 style="color: #ff79c6;">タイル屋の話を聞いて俊男が考えたであろうこと</h1>
         <ul>
           <li>気にしていたタイルの産地がわかったことで少しスペインタイルの家が身近なものに感じられた</li></br>
           <li>この後の行動に影響する</li></br>
         </ul>
       </section>
       <section id="section4" class="section section4">
-        <h1>なぜ、スペイン、と言ってみたのか</h1>
+        <h1 style="color: #ff79c6;">なぜ、スペイン、と言ってみたのか</h1>
         <ul>
           <li>スペインタイルの家のことが気になって仕事中でも考えていることがわかる</li><br>
         </ul>
       </section>
       <section id="section5" class="section section5">
-        <h1>彼の仕事がこの物語で果たしている役割について</h1>
-        </br><h2>電気工という職業であることによってスペインタイルの部屋の間取りがわかる</br>→筆者はスペインタイルの家の描写にかなり力を入れていると考えられる</h2>
+        <h1 style="color: #ff79c6;">彼の仕事がこの物語で果たしている役割について</h1>
+        </br><p>電気工という職業であることによってスペインタイルの部屋の間取りがわかる→筆者はスペインタイルの家の描写にかなり力を入れていると考えられる</p>
       </section>
       <section id="section6" class="section section6">
-        <h1>自分の仕事の意味を再確認するとは</h1>
+        <h1 style="color: #ff79c6;">自分の仕事の意味を再確認するとは</h1>
         <ul>
           <li>自分の電気工としての仕事によってスペインタイルの家に電気が灯っていると実感したため</li></br>
           <li>自分の仕事が憧れていた家の役に立っていると知って嬉しく思っている</li>
       </section>
     </div>
     <nav id="pagination" class="pagination">
+      <a id="pagination0" href="#section0"></a>
       <a id="pagination1" href="#section1"></a>
       <a id="pagination2" href="#section2"></a>
       <a id="pagination3" href="#section3"></a>
