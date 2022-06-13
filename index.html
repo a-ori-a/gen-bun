@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>フルページスクロール</title>
+    <script src="smoothscroll.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        margin-bottom: 1.8em;
+      }
+
+      p {
+        margin-bottom: 2em;
+      }
+
+      .fullPageScroll {
+        width: 100%;
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .section {
+        width: 100%;
+        height: 100vh;
+        padding: 10%;
+        scroll-snap-align: start;
+      }
+
+      .section1 {
+        background-color: #ffba49;
+      }
+
+      .section2 {
+        color: white;
+        background-color: mediumvioletred;
+      }
+
+
+      .section3 {
+        background-color: #ef5b5b;
+      }
+
+
+      .section4 {
+        background-color: #a4a9ad;
+      }
+
+      .section4 iframe {
+        width: 100%;
+        height: 100%;
+      }
+
+      .section5 {
+        background-color: #20a39e;
+      }
+
+      .section6 {
+        color: white;
+        background-color: #2d2e3f;
+        width: 100%;
+        height: 100%;
+      }
+
+      .pagination {
+        position: fixed;
+        top: 50%;
+        right: 32px;
+        transform: translateY(-50%);
+      }
+
+      .pagination a {
+        display: block;
+        width: 12px;
+        height: 12px;
+        margin: 24px 0;
+        border-radius: 50%;
+        background-color: #fcfcfc;
+        transition: transform 0.2s;
+      }
+
+      .pagination a.active {
+        transform: scale(1.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fullPageScroll">
+      <section id="section1" class="section section1">
+        <h1>紙が黄ばむ？</h1>
+        <p>
+          <ul>
+            <li>特に対策をしていない場合は2〜3年程度持つらしい</li></br>
+            <li>少なくとも2年は俊男はスペインタイルの家に憧れてきたと考えられる</li></br>
+            <li>筆者の意図としてはとにかく長い期間憧れていたと伝えたいのだろう</li>
+          </ul>
+        </p>
+      </section>
+      <section id="section2" class="section section2">
+        <h1>そもそもスペインタイルとは？</h1>
+        <p><img src="img/Spain.png" width="300" height="300" align="middle"/><br/>
+        <ul>
+          <li>その名の通りスペイン発祥のタイル</li></br>
+          <li>カラフルで装飾性に富んでいる</li>
+        </ul></p>
+      </section>
+      <section id="section3" class="section section3">
+        <h1>タイル屋の話を聞いて俊男が考えたであろうこと</h1>
+        <ul>
+          <li>気にしていたタイルの産地がわかったことで少しスペインタイルの家が身近なものに感じられた</li></br>
+          <li>この後の行動に影響する</li></br>
+        </ul>
+      </section>
+      <section id="section4" class="section section4">
+        <h1>なぜ、スペイン、と言ってみたのか</h1>
+        <ul>
+          <li>スペインタイルの家のことが気になって仕事中でも考えていることがわかる</li><br>
+        </ul>
+      </section>
+      <section id="section5" class="section section5">
+        <h1>彼の仕事がこの物語で果たしている役割について</h1>
+        </br><p>電気工という職業であることによってスペインタイルの部屋の間取りがわかる→筆者はスペインタイルの家の描写にかなり力を入れていると考えられる</p>
+      </section>
+      <section id="section6" class="section section6">
+        <h1>自分の仕事の意味を再確認するとは</h1>
+        <ul>
+          <li>自分の電気工としての仕事によってスペインタイルの家に電気が灯っていると実感したため</li></br>
+          <li>自分の仕事が憧れていた家の役に立っていると知って嬉しく思っている</li>
+      </section>
+    </div>
+    <nav id="pagination" class="pagination">
+      <a id="pagination1" href="#section1"></a>
+      <a id="pagination2" href="#section2"></a>
+      <a id="pagination3" href="#section3"></a>
+      <a id="pagination4" href="#section4"></a>
+      <a id="pagination5" href="#section5"></a>
+      <a id="pagination6" href="#section6"></a>
+    </nav>
+    <script>
+      const paginations = document.querySelectorAll(".pagination a");
+      paginations.forEach(pagination => {
+        pagination.addEventListener("click", e => {
+          e.preventDefault();
+          const targetId = e.target.hash;
+          const target = document.querySelector(targetId);
+          target.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // Intersection Observer
+      const sections = document.querySelectorAll(".section");
+      const observerRoot = document.querySelector(".fullPageScroll");
+      const options = {
+        root: observerRoot,
+        rootMargin: "-50% 0px",
+        threshold: 0
+      };
+      const observer = new IntersectionObserver(doWhenIntersect, options);
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      function doWhenIntersect(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            activatePagination(entry.target);
+          }
+        });
+      }
+      function activatePagination(element) {
+        const currentActiveIndex = document.querySelector(
+          "#pagination .active"
+        );
+        if (currentActiveIndex !== null) {
+          currentActiveIndex.classList.remove("active");
+        }
+        const newActiveIndex = document.querySelector(
+          `a[href='#${element.id}']`
+        );
+        newActiveIndex.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
